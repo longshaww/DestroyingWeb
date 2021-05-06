@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>TO DO</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <!-- .textcontent
+    .children
+    .document.createElement()
+    .appendChild()
+    .remove() 
+    .innerHTML
+-->
+    
+    <h1>ToDo List</h1>
+    <input id = "new-item" type="text" />
+    <button id = "add-btn">Add</button>
+    <button id = remove-btn>Remove</button>
+    <ul id ="todo-list">
+    </ul>
+    <p style="font-size:22px;">Copyright longshaww</p>
+        <script type = "text/javascript">
+        var todoList = [
+            'Playing games',
+            'Eat',
+            'Coding',
+            'Sleep',
+            'Yêu Bắp'
+        ];
+            var addBtn = document.getElementById("add-btn")
+            // addBtn.onclick = addItem;
+            addBtn.addEventListener('click' , addItem);
+            //trigger an event --> do addItem function
+            var removeBtn = document.getElementById("remove-btn");
+            removeBtn.addEventListener('click',RemoveItem);
+            
+        function addItem(){
+            var input = document.getElementById("new-item");
+            var newItem = input.value;
+            todoList.push(newItem);
+            render();
+            input.value = '';
+        }
+        function RemoveItem(){
+            todoList.pop(todoList);
+            render();
+        }
+        
+        function render(){
+        var htmlList = document.getElementById("todo-list");
+        var content = todoList.map(function(item){
+            return '<li>' + item + '</li>';
+        });
+        htmlList.innerHTML = content.join('');
+        }
+        render();
+        </script>
+    
+    </body>
+</html>
